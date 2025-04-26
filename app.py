@@ -109,6 +109,10 @@ if 'chat_history' not in st.session_state:
 # Sidebar
 st.sidebar.title("CrowdStrike Enhanced EDR")
 
+# Designer attribution
+st.sidebar.markdown("---")
+st.sidebar.markdown("<small>Designed by: <a href='https://www.linkedin.com/in/lindsayhiebert/' target='_blank'>Lindsay Hiebert</a></small>", unsafe_allow_html=True)
+
 # View Mode at top of sidebar
 view_mode = st.sidebar.radio("View Mode", ['Triage Dashboard','AI Chat'])
 
@@ -131,6 +135,9 @@ group_by = st.sidebar.selectbox("Group by", ['None','host','technique','triggeri
 
 # AI Chat view
 if view_mode=='AI Chat':
+    # Add footer with attribution
+    st.markdown("---")
+    st.markdown("<div style='text-align:center; color:gray; font-size:0.8em;'>Designed by <a href='https://www.linkedin.com/in/lindsayhiebert/' target='_blank'>Lindsay Hiebert</a> | Powered by Google Gemini and OpenAI</div>", unsafe_allow_html=True)
     # Initialize chat context if not present
     if 'context_selected' not in st.session_state:
         st.session_state.context_selected = None
@@ -332,6 +339,10 @@ if search_query:
     df = df[df.apply(lambda r: search_query.lower() in str(r.values).lower(), axis=1)]
 
 st.header("🚨 CrowdStrike Enhanced EDR - Triage Dashboard")
+
+# Add footer with attribution
+st.markdown("---")
+st.markdown("<div style='text-align:center; color:gray; font-size:0.8em;'>Designed by <a href='https://www.linkedin.com/in/lindsayhiebert/' target='_blank'>Lindsay Hiebert</a> | Powered by Google Gemini and OpenAI</div>", unsafe_allow_html=True)
 
 # Grouping
 if group_by!='None':

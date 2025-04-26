@@ -2,6 +2,8 @@
 
 ## Enabling Faster, Better, Smarter Endpoint Security, Triage and Effective Response
 
+**Designed by: [Lindsay Hiebert](https://www.linkedin.com/in/lindsayhiebert/)**
+
 ![CrowdStrike Shield](https://raw.githubusercontent.com/lhiebert01/CrowdStrike-AI-Triage-Dashboard/main/assets/cs-shield.png)
 
 This project demonstrates an AI-powered enhancement to CrowdStrike's Endpoint Detection and Response (EDR) platform. The dashboard helps SOC analysts work more efficiently by providing contextual information, AI assistance, and streamlined workflows for triaging security alerts.
@@ -155,7 +157,12 @@ This project is licensed under the MIT License.
 
 ## 🙏 Acknowledgments
 
+- **[Lindsay Hiebert](https://www.linkedin.com/in/lindsayhiebert/)** - Design and development
 - CrowdStrike for EDR platform inspiration
 - Google for the Gemini AI platform
 - OpenAI for their generative AI capabilities
 - Streamlit for the application framework
+
+## 📢 Feedback
+
+I welcome your feedback and suggestions! Please connect with me on [LinkedIn](https://www.linkedin.com/in/lindsayhiebert/) to share your thoughts about this project.
