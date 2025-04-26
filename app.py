@@ -6,13 +6,29 @@ import requests
 import openai
 from dotenv import dotenv_values
 
-# Load and parse .env
-env_path = os.path.join(os.path.dirname(__file__), ".env")
-config = dotenv_values(env_path)
-# Trim API keys
-GOOGLE_KEY = (config.get("GOOGLE_API_KEY") or "").strip()
-OPENAI_KEY = (config.get("OPENAI_API_KEY") or "").strip()
-# Assign OpenAI API key first
+# Load API keys from Streamlit secrets (cloud) or .env file (local)
+try:
+    # First try loading from streamlit secrets
+    GOOGLE_KEY = st.secrets.get("GOOGLE_API_KEY", "")
+    OPENAI_KEY = st.secrets.get("OPENAI_API_KEY", "")
+    
+    # If both are empty, try loading from .env
+    if not (GOOGLE_KEY or OPENAI_KEY):
+        # Load and parse .env
+        env_path = os.path.join(os.path.dirname(__file__), ".env")
+        config = dotenv_values(env_path)
+        # Trim API keys
+        GOOGLE_KEY = (config.get("GOOGLE_API_KEY") or "").strip()
+        OPENAI_KEY = (config.get("OPENAI_API_KEY") or "").strip()
+        
+except Exception as e:
+    # Log error for debugging
+    print(f"Error loading API keys: {e}")
+    # Fall back to empty keys if all loading methods fail
+    GOOGLE_KEY = ""
+    OPENAI_KEY = ""
+    
+# Assign OpenAI API key if available
 if OPENAI_KEY:
     openai.api_key = OPENAI_KEY
 
